@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ChaCha Kitchen</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff7e6;
+            margin: 0;
+        }
+
+        header {
+            background: #ff914d;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            width: 320px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .ingredients {
+            background: #ffeaa7;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .steps {
+            background: #dfe6e9;
+            padding: 12px;
+            border-radius: 12px;
+            display: none;
+        }
+
+        button {
+            background: #ff6b6b;
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #ff3f6b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        🍳 Yubin Kitchen – Resep Nusantara
+    </header>
+
+    <div class="container">
+
+        <!-- NASI GORENG -->
+        <div class="card">
+            <img src="nasigoreng.jpg">
+            <div class="content">
+
+                <div class="title">Nasi Goreng</div>
+
+                <div class="ingredients">
+                    <b>Bahan:</b>
+                    <ul>
+                        <li>2 piring nasi putih</li>
+                        <li>1 butir telur</li>
+                        <li>2 siung bawang putih</li>
+                        <li>1 sdm kecap manis</li>
+                        <li>1 sdt garam</li>
+                        <li>1 sdm minyak goreng</li>
+                        <li>50 gram ayam suwir</li>
+                    </ul>
+                </div>
+
+                <div class="steps" id="s1">
+                    <b>Langkah:</b>
+                    <ol>
+                        <li>Panaskan minyak di wajan.</li>
+                        <li>Tumis bawang putih hingga harum.</li>
+                        <li>Masukkan telur lalu orak-arik.</li>
+                        <li>Tambahkan ayam suwir.</li>
+                        <li>Masukkan nasi putih.</li>
+                        <li>Tambahkan kecap manis dan garam.</li>
+                        <li>Aduk hingga rata dan matang.</li>
+                    </ol>
+                </div>
+
+                <button onclick="toggle('s1')">Lihat Cara Memasak</button>
+
+            </div>
+        </div>
+
+        <!-- SATE AYAM -->
+        <div class="card">
+            <img src="sateayam.jpg">
+            <div class="content">
+
+                <div class="title">Sate Ayam</div>
+
+                <div class="ingredients">
+                    <b>Bahan:</b>
+                    <ul>
+                        <li>300 gram daging ayam</li>
+                        <li>2 sdm kecap manis</li>
+                        <li>1 siung bawang putih</li>
+                        <li>1 sdt garam</li>
+                        <li>1 sdm minyak</li>
+                        <li>100 gram kacang tanah</li>
+                    </ul>
+                </div>
+
+                <div class="steps" id="s2">
+                    <b>Langkah:</b>
+                    <ol>
+                        <li>Potong ayam kecil-kecil.</li>
+                        <li>Tusuk dengan tusuk sate.</li>
+                        <li>Haluskan kacang tanah untuk saus.</li>
+                        <li>Bakar sate di atas arang.</li>
+                        <li>Olesi kecap manis saat dibakar.</li>
+                        <li>Sajikan dengan saus kacang.</li>
+                    </ol>
+                </div>
+
+                <button onclick="toggle('s2')">Lihat Cara Memasak</button>
+
+            </div>
+        </div>
+
+        <!-- GADO GADO -->
+        <div class="card">
+            <img src="gadogado.jpg">
+            <div class="content">
+
+                <div class="title">Gado-Gado</div>
+
+                <div class="ingredients">
+                    <b>Bahan:</b>
+                    <ul>
+                        <li>100 gram kangkung</li>
+                        <li>100 gram tauge</li>
+                        <li>1 buah telur rebus</li>
+                        <li>2 potong tahu goreng</li>
+                        <li>2 potong tempe goreng</li>
+                        <li>150 gram kacang tanah</li>
+                        <li>1 sdm gula merah</li>
+                    </ul>
+                </div>
+
+                <div class="steps" id="s3">
+                    <b>Langkah:</b>
+                    <ol>
+                        <li>Rebus kangkung dan tauge.</li>
+                        <li>Goreng tahu dan tempe.</li>
+                        <li>Haluskan kacang tanah dan gula merah.</li>
+                        <li>Tambahkan sedikit air untuk saus.</li>
+                        <li>Susun sayuran di piring.</li>
+                        <li>Siram dengan saus kacang.</li>
+                    </ol>
+                </div>
+
+                <button onclick="toggle('s3')">Lihat Cara Memasak</button>
+
+            </div>
+        </div>
+
+        <!-- RENDANG -->
+        <div class="card">
+            <img src="rendang.jpg">
+            <div class="content">
+
+                <div class="title">Rendang</div>
+
+                <div class="ingredients">
+                    <b>Bahan:</b>
+                    <ul>
+                        <li>500 gram daging sapi</li>
+                        <li>400 ml santan</li>
+                        <li>3 siung bawang putih</li>
+                        <li>5 cabai merah</li>
+                        <li>1 ruas lengkuas</li>
+                        <li>2 lembar daun jeruk</li>
+                        <li>1 sdt garam</li>
+                    </ul>
+                </div>
+
+                <div class="steps" id="s4">
+                    <b>Langkah:</b>
+                    <ol>
+                        <li>Haluskan bawang dan cabai.</li>
+                        <li>Tumis bumbu hingga harum.</li>
+                        <li>Masukkan santan.</li>
+                        <li>Tambahkan daging sapi.</li>
+                        <li>Masak dengan api kecil.</li>
+                        <li>Aduk sampai kuah mengental.</li>
+                    </ol>
+                </div>
+
+                <button onclick="toggle('s4')">Lihat Cara Memasak</button>
+
+            </div>
+        </div>
+
+        <!-- SOTO AYAM -->
+        <div class="card">
+            <img src="sotoayam.jpg">
+            <div class="content">
+
+                <div class="title">Soto Ayam</div>
+
+                <div class="ingredients">
+                    <b>Bahan:</b>
+                    <ul>
+                        <li>300 gram ayam</li>
+                        <li>1 liter air</li>
+                        <li>2 siung bawang putih</li>
+                        <li>1 sdt kunyit</li>
+                        <li>1 sdt garam</li>
+                        <li>50 gram bihun</li>
+                    </ul>
+                </div>
+
+                <div class="steps" id="s5">
+                    <b>Langkah:</b>
+                    <ol>
+                        <li>Rebus ayam hingga matang.</li>
+                        <li>Haluskan bawang dan kunyit.</li>
+                        <li>Tumis bumbu hingga harum.</li>
+                        <li>Masukkan ke dalam kuah ayam.</li>
+                        <li>Tambahkan bihun dan ayam suwir.</li>
+                        <li>Sajikan hangat.</li>
+                    </ol>
+                </div>
+
+                <button onclick="toggle('s5')">Lihat Cara Memasak</button>
+
+            </div>
+        </div>
+
+        <!-- MARTABAK MANIS -->
+        <div class="card">
+            <img src="martabak.jpg">
+            <div class="content">
+
+                <div class="title">Martabak Manis</div>
+
+                <div class="ingredients">
+                    <b>Bahan:</b>
+                    <ul>
+                        <li>200 gram tepung terigu</li>
+                        <li>1 sdm gula</li>
+                        <li>1 butir telur</li>
+                        <li>300 ml air</li>
+                        <li>1 sdt baking powder</li>
+                        <li>Mentega secukupnya</li>
+                        <li>Coklat dan keju topping</li>
+                    </ul>
+                </div>
+
+                <div class="steps" id="s6">
+                    <b>Langkah:</b>
+                    <ol>
+                        <li>Campur tepung, gula, dan air.</li>
+                        <li>Tambahkan telur dan baking powder.</li>
+                        <li>Aduk hingga adonan halus.</li>
+                        <li>Tuang ke wajan datar.</li>
+                        <li>Masak hingga muncul lubang.</li>
+                        <li>Tambahkan topping dan lipat.</li>
+                    </ol>
+                </div>
+
+                <button onclick="toggle('s6')">Lihat Cara Memasak</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        function toggle(id) {
+            let x = document.getElementById(id)
+
+            if (x.style.display === "block") {
+                x.style.display = "none"
+            } else {
+                x.style.display = "block"
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
