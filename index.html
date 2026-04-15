@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ChaCha Kitchen</title>
+    <title>Yubin Kitchen - Resep Dunia</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -23,6 +23,31 @@
             padding: 25px;
             font-size: 30px;
             font-weight: bold;
+        }
+
+        .search-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto 0 auto;
+            padding: 0 20px;
+        }
+
+        #searchInput {
+            width: 100%;
+            max-width: 500px;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            border: 2px solid #ff914d;
+            border-radius: 50px;
+            outline: none;
+            transition: 0.3s;
+            background: white;
+        }
+
+        #searchInput:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
         }
 
         .container {
@@ -50,6 +75,7 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
+            background: #f0e4c6;
         }
 
         .content {
@@ -89,24 +115,34 @@
         button:hover {
             background: #ff3f6b;
         }
+
+        .no-result {
+            text-align: center;
+            font-size: 18px;
+            color: #ff6b6b;
+            margin-top: 40px;
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
 
     <header>
-        🍳 Yubin Kitchen – Resep Nusantara
+        🍳 Yubin Kitchen – Resep Nusantara & Dunia
     </header>
 
-    <div class="container">
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="🔍 Cari resep... (contoh: nasi, kimbap, burger, sushi)">
+    </div>
 
-        <!-- NASI GORENG -->
-        <div class="card">
-            <img src="nasigoreng.jpg">
+    <div class="container" id="resepContainer">
+
+        <!-- ==================== RESEP NUSANTARA (6 asli) ==================== -->
+        <div class="card" data-title="nasi goreng">
+            <img src="nasigoreng.jpg" alt="Nasi Goreng">
             <div class="content">
-
                 <div class="title">Nasi Goreng</div>
-
                 <div class="ingredients">
                     <b>Bahan:</b>
                     <ul>
@@ -119,9 +155,7 @@
                         <li>50 gram ayam suwir</li>
                     </ul>
                 </div>
-
-                <div class="steps" id="s1">
-                    <b>Langkah:</b>
+                <div class="steps" id="s1"><b>Langkah:</b>
                     <ol>
                         <li>Panaskan minyak di wajan.</li>
                         <li>Tumis bawang putih hingga harum.</li>
@@ -132,21 +166,15 @@
                         <li>Aduk hingga rata dan matang.</li>
                     </ol>
                 </div>
-
                 <button onclick="toggle('s1')">Lihat Cara Memasak</button>
-
             </div>
         </div>
 
-        <!-- SATE AYAM -->
-        <div class="card">
-            <img src="sateayam.jpg">
+        <div class="card" data-title="sate ayam">
+            <img src="sateayam.jpg" alt="Sate Ayam">
             <div class="content">
-
                 <div class="title">Sate Ayam</div>
-
-                <div class="ingredients">
-                    <b>Bahan:</b>
+                <div class="ingredients"><b>Bahan:</b>
                     <ul>
                         <li>300 gram daging ayam</li>
                         <li>2 sdm kecap manis</li>
@@ -156,9 +184,7 @@
                         <li>100 gram kacang tanah</li>
                     </ul>
                 </div>
-
-                <div class="steps" id="s2">
-                    <b>Langkah:</b>
+                <div class="steps" id="s2"><b>Langkah:</b>
                     <ol>
                         <li>Potong ayam kecil-kecil.</li>
                         <li>Tusuk dengan tusuk sate.</li>
@@ -168,21 +194,15 @@
                         <li>Sajikan dengan saus kacang.</li>
                     </ol>
                 </div>
-
                 <button onclick="toggle('s2')">Lihat Cara Memasak</button>
-
             </div>
         </div>
 
-        <!-- GADO GADO -->
-        <div class="card">
-            <img src="gadogado.jpg">
+        <div class="card" data-title="gado gado">
+            <img src="gadogado.jpg" alt="Gado-Gado">
             <div class="content">
-
                 <div class="title">Gado-Gado</div>
-
-                <div class="ingredients">
-                    <b>Bahan:</b>
+                <div class="ingredients"><b>Bahan:</b>
                     <ul>
                         <li>100 gram kangkung</li>
                         <li>100 gram tauge</li>
@@ -193,9 +213,7 @@
                         <li>1 sdm gula merah</li>
                     </ul>
                 </div>
-
-                <div class="steps" id="s3">
-                    <b>Langkah:</b>
+                <div class="steps" id="s3"><b>Langkah:</b>
                     <ol>
                         <li>Rebus kangkung dan tauge.</li>
                         <li>Goreng tahu dan tempe.</li>
@@ -205,21 +223,15 @@
                         <li>Siram dengan saus kacang.</li>
                     </ol>
                 </div>
-
                 <button onclick="toggle('s3')">Lihat Cara Memasak</button>
-
             </div>
         </div>
 
-        <!-- RENDANG -->
-        <div class="card">
-            <img src="rendang.jpg">
+        <div class="card" data-title="rendang">
+            <img src="rendang.jpg" alt="Rendang">
             <div class="content">
-
                 <div class="title">Rendang</div>
-
-                <div class="ingredients">
-                    <b>Bahan:</b>
+                <div class="ingredients"><b>Bahan:</b>
                     <ul>
                         <li>500 gram daging sapi</li>
                         <li>400 ml santan</li>
@@ -230,9 +242,7 @@
                         <li>1 sdt garam</li>
                     </ul>
                 </div>
-
-                <div class="steps" id="s4">
-                    <b>Langkah:</b>
+                <div class="steps" id="s4"><b>Langkah:</b>
                     <ol>
                         <li>Haluskan bawang dan cabai.</li>
                         <li>Tumis bumbu hingga harum.</li>
@@ -242,21 +252,15 @@
                         <li>Aduk sampai kuah mengental.</li>
                     </ol>
                 </div>
-
                 <button onclick="toggle('s4')">Lihat Cara Memasak</button>
-
             </div>
         </div>
 
-        <!-- SOTO AYAM -->
-        <div class="card">
-            <img src="sotoayam.jpg">
+        <div class="card" data-title="soto ayam">
+            <img src="sotoayam.jpg" alt="Soto Ayam">
             <div class="content">
-
                 <div class="title">Soto Ayam</div>
-
-                <div class="ingredients">
-                    <b>Bahan:</b>
+                <div class="ingredients"><b>Bahan:</b>
                     <ul>
                         <li>300 gram ayam</li>
                         <li>1 liter air</li>
@@ -266,9 +270,7 @@
                         <li>50 gram bihun</li>
                     </ul>
                 </div>
-
-                <div class="steps" id="s5">
-                    <b>Langkah:</b>
+                <div class="steps" id="s5"><b>Langkah:</b>
                     <ol>
                         <li>Rebus ayam hingga matang.</li>
                         <li>Haluskan bawang dan kunyit.</li>
@@ -278,21 +280,15 @@
                         <li>Sajikan hangat.</li>
                     </ol>
                 </div>
-
                 <button onclick="toggle('s5')">Lihat Cara Memasak</button>
-
             </div>
         </div>
 
-        <!-- MARTABAK MANIS -->
-        <div class="card">
-            <img src="martabak.jpg">
+        <div class="card" data-title="martabak manis">
+            <img src="martabak.jpg" alt="Martabak Manis">
             <div class="content">
-
                 <div class="title">Martabak Manis</div>
-
-                <div class="ingredients">
-                    <b>Bahan:</b>
+                <div class="ingredients"><b>Bahan:</b>
                     <ul>
                         <li>200 gram tepung terigu</li>
                         <li>1 sdm gula</li>
@@ -303,9 +299,7 @@
                         <li>Coklat dan keju topping</li>
                     </ul>
                 </div>
-
-                <div class="steps" id="s6">
-                    <b>Langkah:</b>
+                <div class="steps" id="s6"><b>Langkah:</b>
                     <ol>
                         <li>Campur tepung, gula, dan air.</li>
                         <li>Tambahkan telur dan baking powder.</li>
@@ -315,29 +309,556 @@
                         <li>Tambahkan topping dan lipat.</li>
                     </ol>
                 </div>
-
                 <button onclick="toggle('s6')">Lihat Cara Memasak</button>
-
             </div>
         </div>
 
+        <!-- ==================== RESEP KOREA (6) ==================== -->
+        <div class="card" data-title="kimchi jjigae">
+            <img src="kimchi.jpg" alt="Kimchi Jjigae">
+            <div class="content">
+                <div class="title">Kimchi Jjigae</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>200 gram kimchi</li>
+                        <li>100 gram pork belly</li>
+                        <li>1 sdm gochujang</li>
+                        <li>1 sdt minyak wijen</li>
+                        <li>2 siung bawang putih</li>
+                        <li>300 ml air</li>
+                        <li>1 tahu sutra</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s7"><b>Langkah:</b>
+                    <ol>
+                        <li>Tumis pork belly hingga keluar minyak.</li>
+                        <li>Masukkan kimchi dan bawang putih.</li>
+                        <li>Tambahkan gochujang dan air.</li>
+                        <li>Rebus 15 menit.</li>
+                        <li>Masukkan tahu potong.</li>
+                        <li>Sajikan dengan minyak wijen.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s7')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="bibimbap">
+            <img src="bibimbap.jpg" alt="Bibimbap">
+            <div class="content">
+                <div class="title">Bibimbap</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>1 mangkok nasi</li>
+                        <li>50 gram wortel</li>
+                        <li>50 gram bayam</li>
+                        <li>1 butir telur</li>
+                        <li>2 sdm gochujang</li>
+                        <li>1 sdt minyak wijen</li>
+                        <li>50 gram daging sapi</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s8"><b>Langkah:</b>
+                    <ol>
+                        <li>Rebus bayam dan wortel.</li>
+                        <li>Tumis daging sapi.</li>
+                        <li>Siapkan nasi di mangkok.</li>
+                        <li>Tata sayur dan daging di atas nasi.</li>
+                        <li>Tambahkan telur ceplok.</li>
+                        <li>Beri gochujang dan minyak wijen, aduk rata.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s8')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="kimbap">
+            <img src="kimbap.jpg" alt="Kimbap">
+            <div class="content">
+                <div class="title">Kimbap</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>2 lembar nori</li>
+                        <li>1 mangkok nasi</li>
+                        <li>50 gram wortel</li>
+                        <li>50 gram bayam</li>
+                        <li>2 batang crabstick</li>
+                        <li>1 butir telur</li>
+                        <li>1 sdt minyak wijen</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s9"><b>Langkah:</b>
+                    <ol>
+                        <li>Gulung nasi di atas nori.</li>
+                        <li>Letakkan wortel, bayam, telur, crabstick.</li>
+                        <li>Gulung sambil ditekan.</li>
+                        <li>Olesi minyak wijen.</li>
+                        <li>Potong sesuai selera.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s9')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="japchae">
+            <img src="japchae.jpg" alt="Japchae">
+            <div class="content">
+                <div class="title">Japchae</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>100 gram soun korea</li>
+                        <li>50 gram wortel</li>
+                        <li>50 gram bayam</li>
+                        <li>50 gram daging sapi</li>
+                        <li>2 sdm kecap asin</li>
+                        <li>1 sdt minyak wijen</li>
+                        <li>1 sdm gula</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s10"><b>Langkah:</b>
+                    <ol>
+                        <li>Rebus soun, tiriskan.</li>
+                        <li>Tumis daging dan sayur.</li>
+                        <li>Campur soun dengan tumisan.</li>
+                        <li>Tambahkan kecap asin, gula, minyak wijen.</li>
+                        <li>Aduk rata, sajikan hangat.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s10')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="tteokbokki">
+            <img src="tteokbokki.jpg" alt="Tteokbokki">
+            <div class="content">
+                <div class="title">Tteokbokki</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>200 gram tteok (kue beras)</li>
+                        <li>2 sdm gochujang</li>
+                        <li>1 sdm gula</li>
+                        <li>2 lembar fish cake</li>
+                        <li>1 batang daun bawang</li>
+                        <li>300 ml air</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s11"><b>Langkah:</b>
+                    <ol>
+                        <li>Campur gochujang, gula, air di wajan.</li>
+                        <li>Masak hingga mendidih.</li>
+                        <li>Masukkan tteok dan fish cake.</li>
+                        <li>Aduk hingga saus mengental.</li>
+                        <li>Tabur daun bawang, sajikan.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s11')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="samgyeopsal">
+            <img src="samgyeopsal.jpg" alt="Samgyeopsal">
+            <div class="content">
+                <div class="title">Samgyeopsal</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>300 gram pork belly</li>
+                        <li>Selada dan daun perilla</li>
+                        <li>Bawang putih cincang</li>
+                        <li>Gochujang untuk cocol</li>
+                        <li>Minyak wijen</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s12"><b>Langkah:</b>
+                    <ol>
+                        <li>Panggang pork belly di wajan tanpa minyak.</li>
+                        <li>Balik hingga kecoklatan.</li>
+                        <li>Potong kecil-kecil.</li>
+                        <li>Sajikan dengan selada, bawang putih, gochujang.</li>
+                        <li>Bungkus dan makan.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s12')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <!-- ==================== RESEP AMERIKA (6) ==================== -->
+        <div class="card" data-title="burger">
+            <img src="burger.jpg" alt="Burger">
+            <div class="content">
+                <div class="title">Burger</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>1 roti burger</li>
+                        <li>150 gram daging sapi giling</li>
+                        <li>1 lembar keju</li>
+                        <li>Selada, tomat, bawang bombay</li>
+                        <li>Saus tomat & mustard</li>
+                        <li>Garam & merica</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s13"><b>Langkah:</b>
+                    <ol>
+                        <li>Bentuk daging menjadi patty.</li>
+                        <li>Panggang patty hingga matang.</li>
+                        <li>Panggang roti sebentar.</li>
+                        <li>Tata selada, patty, keju, tomat, bawang.</li>
+                        <li>Tambahkan saus, tutup roti.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s13')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="mac and cheese">
+            <img src="macandcheese.jpg" alt="Mac and Cheese">
+            <div class="content">
+                <div class="title">Mac and Cheese</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>200 gram makaroni</li>
+                        <li>2 sdm mentega</li>
+                        <li>2 sdm tepung</li>
+                        <li>300 ml susu</li>
+                        <li>150 gram cheddar parut</li>
+                        <li>Garam & merica</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s14"><b>Langkah:</b>
+                    <ol>
+                        <li>Rebus makaroni hingga al dente.</li>
+                        <li>Buat saus: lelehkan mentega, masukkan tepung, aduk.</li>
+                        <li>Tuang susu perlahan sambil diaduk.</li>
+                        <li>Masukkan keju, aduk hingga meleleh.</li>
+                        <li>Campur dengan makaroni, sajikan hangat.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s14')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="fried chicken">
+            <img src="friedchicken.jpg" alt="Fried Chicken">
+            <div class="content">
+                <div class="title">Fried Chicken</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>4 potong ayam</li>
+                        <li>200 ml buttermilk</li>
+                        <li>150 gram tepung terigu</li>
+                        <li>1 sdt paprika bubuk</li>
+                        <li>1 sdt bawang putih bubuk</li>
+                        <li>Garam & merica</li>
+                        <li>Minyak untuk menggoreng</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s15"><b>Langkah:</b>
+                    <ol>
+                        <li>Rendam ayam di buttermilk 1 jam.</li>
+                        <li>Campur tepung dan bumbu.</li>
+                        <li>Lumuri ayam dengan tepung.</li>
+                        <li>Goreng dalam minyak panas hingga matang.</li>
+                        <li>Tiriskan, sajikan.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s15')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="pancake">
+            <img src="pancake.jpg" alt="Pancake">
+            <div class="content">
+                <div class="title">Pancake</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>150 gram tepung terigu</li>
+                        <li>2 sdm gula</li>
+                        <li>1 sdt baking powder</li>
+                        <li>1 butir telur</li>
+                        <li>200 ml susu</li>
+                        <li>2 sdm mentega leleh</li>
+                        <li>Sirup maple</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s16"><b>Langkah:</b>
+                    <ol>
+                        <li>Campur tepung, gula, baking powder.</li>
+                        <li>Di wadah lain kocok telur, susu, mentega.</li>
+                        <li>Gabungkan, aduk rata.</li>
+                        <li>Tuang ke wajan datar, masak hingga bersarang.</li>
+                        <li>Balik, masak sebentar.</li>
+                        <li>Sajikan dengan sirup maple.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s16')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="apple pie">
+            <img src="applepie.jpg" alt="Apple Pie">
+            <div class="content">
+                <div class="title">Apple Pie</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>2 buah apel hijau</li>
+                        <li>100 gram gula</li>
+                        <li>1 sdt kayu manis</li>
+                        <li>1 sdm air lemon</li>
+                        <li>1 lembar puff pastry</li>
+                        <li>1 butir telur (olesan)</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s17"><b>Langkah:</b>
+                    <ol>
+                        <li>Potong apel tipis, campur gula, kayu manis, lemon.</li>
+                        <li>Letakkan apel di atas puff pastry.</li>
+                        <li>Tutup dengan pastry lagi, tekan pinggir.</li>
+                        <li>Oles telur, panggang 200°C 25 menit.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s17')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="clam chowder">
+            <img src="clamchowder.jpg" alt="Clam Chowder">
+            <div class="content">
+                <div class="title">Clam Chowder</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>200 gram kerang kaleng</li>
+                        <li>2 buah kentang potong dadu</li>
+                        <li>50 gram bawang bombay</li>
+                        <li>2 sdm mentega</li>
+                        <li>300 ml susu</li>
+                        <li>100 ml krim kental</li>
+                        <li>Garam & merica</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s18"><b>Langkah:</b>
+                    <ol>
+                        <li>Tumis bawang dengan mentega.</li>
+                        <li>Masukkan kentang, tumis sebentar.</li>
+                        <li>Tuang susu dan krim, masak hingga kentang lunak.</li>
+                        <li>Tambahkan kerang, garam, merica.</li>
+                        <li>Sajikan hangat.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s18')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <!-- ==================== RESEP JEPANG (6) ==================== -->
+        <div class="card" data-title="sushi roll">
+            <img src="sushi.jpg" alt="Sushi Roll">
+            <div class="content">
+                <div class="title">Sushi Roll</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>2 lembar nori</li>
+                        <li>1 mangkok nasi sushi</li>
+                        <li>100 gram salmon segar</li>
+                        <li>1 buah mentimun</li>
+                        <li>1 buah alpukat</li>
+                        <li>Kecap asin & wasabi</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s19"><b>Langkah:</b>
+                    <ol>
+                        <li>Letakkan nori di atas matras bambu.</li>
+                        <li>Ratakan nasi di atas nori.</li>
+                        <li>Letakkan salmon, mentimun, alpukat.</li>
+                        <li>Gulung sambil ditekan.</li>
+                        <li>Potong-potong, sajikan dengan kecap dan wasabi.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s19')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="ramen">
+            <img src="ramen.jpg" alt="Ramen">
+            <div class="content">
+                <div class="title">Ramen</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>1 bungkus mie ramen</li>
+                        <li>500 ml kaldu ayam</li>
+                        <li>1 sdm miso</li>
+                        <li>1 butir telur rebus</li>
+                        <li>2 lembar nori</li>
+                        <li>50 gram chashu (pork)</li>
+                        <li>Daun bawang</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s20"><b>Langkah:</b>
+                    <ol>
+                        <li>Rebus mie hingga matang, tiriskan.</li>
+                        <li>Panaskan kaldu, larutkan miso.</li>
+                        <li>Masukkan mie ke mangkok, tuang kaldu.</li>
+                        <li>Beri topping telur, chashu, nori, daun bawang.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s20')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="tempura">
+            <img src="tempura.jpg" alt="Tempura">
+            <div class="content">
+                <div class="title">Tempura</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>100 gram udang</li>
+                        <li>50 gram sayuran (paprika, terong)</li>
+                        <li>100 gram tepung terigu</li>
+                        <li>1 butir telur</li>
+                        <li>150 ml air es</li>
+                        <li>Minyak untuk menggoreng</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s21"><b>Langkah:</b>
+                    <ol>
+                        <li>Campur tepung, telur, air es (jangan overmix).</li>
+                        <li>Celupkan udang dan sayur ke adonan.</li>
+                        <li>Goreng dalam minyak panas hingga renyah.</li>
+                        <li>Tiriskan, sajikan dengan saus tentsuyu.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s21')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="okonomiyaki">
+            <img src="okonomiyaki.jpg" alt="Okonomiyaki">
+            <div class="content">
+                <div class="title">Okonomiyaki</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>100 gram tepung terigu</li>
+                        <li>100 ml air</li>
+                        <li>1 butir telur</li>
+                        <li>50 gram kol iris</li>
+                        <li>50 gram daging sapi iris</li>
+                        <li>Saus okonomiyaki & mayones</li>
+                        <li>Bonito flakes</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s22"><b>Langkah:</b>
+                    <ol>
+                        <li>Campur tepung, air, telur, kol, daging.</li>
+                        <li>Tuang ke wajan datar, bentuk bulat.</li>
+                        <li>Masak hingga kedua sisi matang.</li>
+                        <li>Oles saus okonomiyaki dan mayones.</li>
+                        <li>Tabur bonito flakes.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s22')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="miso soup">
+            <img src="misosoup.jpg" alt="Miso Soup">
+            <div class="content">
+                <div class="title">Miso Soup</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>500 ml kaldu dashi</li>
+                        <li>2 sdm miso paste</li>
+                        <li>50 gram tahu sutra</li>
+                        <li>1 batang daun bawang</li>
+                        <li>1 lembar wakame (rumput laut)</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s23"><b>Langkah:</b>
+                    <ol>
+                        <li>Panaskan kaldu dashi hingga hampir mendidih.</li>
+                        <li>Ambil sedikit kaldu, larutkan miso.</li>
+                        <li>Masukkan kembali ke panci.</li>
+                        <li>Tambahkan tahu potong, wakame, daun bawang.</li>
+                        <li>Jangan sampai mendidih, sajikan hangat.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s23')">Lihat Cara Memasak</button>
+            </div>
+        </div>
+
+        <div class="card" data-title="takoyaki">
+            <img src="takoyaki.jpg" alt="Takoyaki">
+            <div class="content">
+                <div class="title">Takoyaki</div>
+                <div class="ingredients"><b>Bahan:</b>
+                    <ul>
+                        <li>150 gram tepung terigu</li>
+                        <li>2 butir telur</li>
+                        <li>300 ml kaldu dashi</li>
+                        <li>100 gram gurita rebus potong</li>
+                        <li>Daun bawang</li>
+                        <li>Acar jahe</li>
+                        <li>Saus takoyaki & mayones</li>
+                        <li>Bonito flakes</li>
+                    </ul>
+                </div>
+                <div class="steps" id="s24"><b>Langkah:</b>
+                    <ol>
+                        <li>Buat adonan dari tepung, telur, kaldu.</li>
+                        <li>Panaskan cetakan takoyaki, oles minyak.</li>
+                        <li>Tuang adonan, masukkan gurita, daun bawang, jahe.</li>
+                        <li>Balik bola-bola hingga matang merata.</li>
+                        <li>Sajikan dengan saus, mayones, bonito flakes.</li>
+                    </ol>
+                </div>
+                <button onclick="toggle('s24')">Lihat Cara Memasak</button>
+            </div>
+        </div>
     </div>
 
     <script>
-
         function toggle(id) {
-            let x = document.getElementById(id)
-
+            let x = document.getElementById(id);
             if (x.style.display === "block") {
-                x.style.display = "none"
+                x.style.display = "none";
             } else {
-                x.style.display = "block"
+                x.style.display = "block";
             }
-
         }
 
-    </script>
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.card');
+        const container = document.getElementById('resepContainer');
 
+        searchInput.addEventListener('keyup', function () {
+            const keyword = this.value.toLowerCase().trim();
+            let hasVisible = false;
+
+            cards.forEach(card => {
+                let titleElement = card.querySelector('.title');
+                let title = titleElement ? titleElement.innerText.toLowerCase() : '';
+                if (keyword === '') {
+                    card.style.display = '';
+                    hasVisible = true;
+                } else {
+                    if (title.includes(keyword)) {
+                        card.style.display = '';
+                        hasVisible = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+
+            let existingMsg = document.querySelector('.no-result');
+            if (!hasVisible && keyword !== '') {
+                if (!existingMsg) {
+                    let msg = document.createElement('div');
+                    msg.className = 'no-result';
+                    msg.innerText = '😢 Maaf, resep "' + keyword + '" tidak ditemukan. Coba kata kunci lain!';
+                    container.appendChild(msg);
+                }
+            } else {
+                if (existingMsg) existingMsg.remove();
+            }
+        });
+    </script>
 </body>
 
 </html>
